@@ -1,0 +1,56 @@
+http - http://localhost:80/authentication/*
+https - http://localhost:443/authentication/*
+
+*
+1) /registration
+method POST
+Headers not needed
+Body 
+{
+  "login": string,
+  "email": string,
+  "password": string
+}
+
+2) /login
+method PATCH
+Headers not needed
+Body 
+{
+  "email": string,
+  "password": string
+}
+
+3) /logout
+method PATCH
+Headers { Authorization : your access token }
+Body 
+{
+  "userId": number,
+}
+
+4) /refresh
+method PATCH
+Headers not needed
+Body 
+{
+  "userId": number,
+}
+
+5) /forgotPassword
+method PATCH
+Headers not needed
+Body 
+{
+  "email": string,
+  "password": string
+}
+
+
+
+
+
+
+
+
+
