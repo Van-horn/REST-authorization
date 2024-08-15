@@ -2,7 +2,12 @@ How to launch:
 1) git clone https://github.com/Van-horn/REST-authorization
 2) cd .\REST-authorization\  
 3) Run docker engine
-4)"docker-compose up --build" (if an error occurs execute : "docker volume rm rest-authorization_postgres-data", than (3) )
+4)"docker-compose up --build"
+
+If an error occurs execute :
+1) Remove the docker container with this application
+2) "docker volume rm rest-authorization_postgres-data"
+3) "docker-compose up --build"
 
 http - http://localhost/authentication/*
 https - https://localhost/authentication/*
