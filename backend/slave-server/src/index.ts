@@ -28,7 +28,7 @@ async function slaveServer() {
   try { 
     await https.createServer(httpsOpt, app).listen(process.env.PORT, async () => {
       await sequelize.authenticate();
-      await sequelize.sync({ alter: true })
+      await sequelize.sync({ alter: false, logging: false, force: false })
 
     console.log(`slave-server`)
   });
