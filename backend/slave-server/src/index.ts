@@ -27,8 +27,7 @@ app.use(errorMiddleware);
 async function slaveServer() {
   try { 
     await https.createServer(httpsOpt, app).listen(process.env.PORT, async () => {
-      await sequelize.authenticate();
-      await sequelize.sync({ alter: false, logging: false, force: false })
+      await sequelize.authenticate()
 
     console.log(`slave-server`)
   });

@@ -46,13 +46,19 @@ services:
       - postgres-data:/var/lib/postgresql/data
     networks:
       - db-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   master-server:
     build:
       context: ./backend/master-server
       dockerfile: Dockerfile
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     networks:
       - db-network
 
@@ -61,7 +67,7 @@ services:
       context: ./backend/slave-server
       dockerfile: Dockerfile
     depends_on:
-      - postgres
+     - master-server
     networks:
       - db-network
 

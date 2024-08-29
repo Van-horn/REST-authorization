@@ -31,8 +31,7 @@ async function masterServer() {
   try { 
     await https.createServer(httpsOpt, app).listen(process.env.PORT, async () => {
       await sequelize.authenticate();
-      await sequelize.sync({ alter: false, logging: false, force: false })
-
+      await sequelize.sync({ logging: false })
     console.log(`master-server`)
   });
 
